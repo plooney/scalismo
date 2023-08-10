@@ -241,7 +241,7 @@ class DiscreteLowRankGaussianProcess[D: NDSpace, DDomain[DD] <: DiscreteDomain[D
    * @return
    *   a (continuous) low-rank Gaussian process
    */
-  override def interpolate(interpolator: FieldInterpolator[D, DDomain, Value]): LowRankGaussianProcess[D, Value] = {
+   override def interpolate(interpolator: FieldInterpolator[D, DDomain, Value]): LowRankGaussianProcess[D, Value] = {
     val newKLBasis = for (DiscreteEigenpair(eigenVal, eigenFun) <- klBasis) yield {
       Eigenpair(eigenVal, eigenFun.interpolate(interpolator))
     }

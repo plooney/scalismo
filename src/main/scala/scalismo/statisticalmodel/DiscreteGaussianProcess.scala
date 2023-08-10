@@ -131,7 +131,11 @@ class DiscreteGaussianProcess[D: NDSpace, DDomain[D] <: DiscreteDomain[D], Value
 
   }
 
-  def interpolate(interpolator: FieldInterpolator[D, DDomain, Value], tolerance: Double = 0.0): GaussianProcess[D, Value] = {
+  def interpolate(interpolator: FieldInterpolator[D, DDomain, Value]): GaussianProcess[D, Value] = {
+    interpolateTolerance(interpolator, 0.0)
+  }
+
+  def interpolateTolerance(interpolator: FieldInterpolator[D, DDomain, Value], tolerance: Double = 0.0): GaussianProcess[D, Value] = {
 
     // We know how to interpolate DiscreteLowRankGaussianProcesses, but
     // not this more generic type of DiscreteGP. Since we are sure that our
